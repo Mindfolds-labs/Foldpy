@@ -1,6 +1,4 @@
-﻿# FoldPy
 
-Structural visual transformation engine for tensors, geometry, scale, projection and approximate lifting.
 
 # FoldPy
 
