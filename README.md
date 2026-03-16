@@ -76,3 +76,57 @@ For TestPyPI, replace the upload URL:
 ```bash
 python -m twine upload --repository testpypi dist/*
 ```
+
+## Experimentos com PyTorch
+
+Esta base agora inclui um experimento mínimo de classificação no MNIST para comparar:
+
+1. **Baseline** com entrada original `[1, 28, 28]`.
+2. **FoldPy** com entrada estrutural enriquecida `[4, 28, 28]`.
+
+### Canais estruturais usados no experimento
+
+Implementados em `foldpy.build_structural_channels(...)`:
+
+1. imagem original em grayscale normalizada
+2. `edge_map`
+3. `depth_hint`
+4. máscara simples via `mask_region`
+
+Saída da função: `numpy.ndarray` em formato `[C, H, W]`, `float32`, faixa `[0, 1]`.
+
+### Limitações e aproximações
+
+- O canal de máscara é uma segmentação simples por limiar de intensidade (não é segmentação semântica).
+- `depth_hint` é um indício estrutural aproximado, não reconstrução métrica 3D.
+- Resultados variam com hardware/seed/subconjunto escolhido.
+
+### Instalação para desenvolvimento/experimentos
+
+```bash
+pip install -e .[dev]
+```
+
+### Como rodar
+
+Treino baseline:
+
+```bash
+python -m experiments.train_baseline --epochs 2 --subset 20000
+```
+
+Treino FoldPy (canais estruturais):
+
+```bash
+python -m experiments.train_foldpy --epochs 2 --subset 20000
+```
+
+Comparar resultados:
+
+```bash
+python -m experiments.compare_results \
+  --baseline experiments/outputs/baseline_metrics.json \
+  --foldpy experiments/outputs/foldpy_metrics.json
+```
+
+Arquivos de saída são gravados em `experiments/outputs/` (`*.json`, `results_summary.csv`, `comparison.csv`).
