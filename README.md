@@ -12,6 +12,7 @@ FoldPy is a **structural visual transformation engine** for tensors, geometry, s
 - Concentric layers + border/shell series
 - Directional generators and angular perspective matrices
 - Structural depth hint and approximate lifting primitives
+- Approximate 2D spatial inference pipeline (edge/mask/depth/occupancy features)
 - RGB ↔ LMS color conversion
 - Scale pyramid generation
 - Legendre structural signatures
@@ -51,6 +52,7 @@ print(len(layers), areas.shape, z.shape)
 ## Documentation
 
 - API guide: [`docs/api.md`](docs/api.md)
+- MNIST spatial experiment: [`docs/spatial_mnist_pipeline.md`](docs/spatial_mnist_pipeline.md)
 - Changelog: GitHub Releases
 - Source repository: <https://github.com/Mindfolds-labs/Foldpy>
 

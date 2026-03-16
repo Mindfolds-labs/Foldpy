@@ -11,6 +11,7 @@ from .multiview import multi_view_align
 from .projection import angular_perspective_matrix, depth_hint, depth_order_map, directional_field
 from .regions import Region, region, region_graph
 from .scale import scale_pyramid
+from .spatial import SpatialApproximation, image_plus_structural_channels, infer_spatial_approximation, structural_channels
 from .svg_bridge import from_svg, svg_to_raster
 from .tensors import angular_tensor
 from .transforms import normalize, patchify, resize_nearest
@@ -39,6 +40,10 @@ __all__ = [
     "rgb_to_lms",
     "lms_to_rgb",
     "scale_pyramid",
+    "SpatialApproximation",
+    "infer_spatial_approximation",
+    "structural_channels",
+    "image_plus_structural_channels",
     "legendre_encode",
     "legendre_decode",
     "legendre_signature",
