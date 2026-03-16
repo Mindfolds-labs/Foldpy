@@ -23,6 +23,7 @@
 ## Tensor and Volume
 - `angular_tensor`
 - `volume_lift`
+- `infer_spatial_approximation`, `structural_channels`, `image_plus_structural_channels`
 
 ## Reproducibility
 - `RuntimeConfig`
